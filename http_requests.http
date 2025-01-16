@@ -1,0 +1,30 @@
+### Processar Pagamento
+POST http://localhost:8080/process-payment
+Content-Type: application/json
+
+{
+    "gateway": "PayPal",
+    "amount": 100.00,
+    "currency": "USD",
+    "payment_method": "credit_card",
+    "card_details": {
+        "number": "4111111111111111",
+        "expiry": "12/25",
+        "cvv": "123"
+    }
+}
+
+### Verificar Status da Transação
+GET http://localhost:8080/payment-status?transaction_id=PAY-865726753&gateway=PayPal
+
+
+
+### Converter Moeda
+POST http://localhost:8080/convert-currency
+Content-Type: application/json
+
+{
+    "amount": 100.00,
+    "from_currency": "BRL",
+    "to_currency": "USD"
+}
