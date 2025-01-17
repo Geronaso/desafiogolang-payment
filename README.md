@@ -2,7 +2,7 @@
 Este repositório é um desafio de programação que simula um arquitetura multigateway e multimoeda para um sistema de cobranças e processos financeiros.
 
 ## Arquitetura
-
+```mermaid
 graph TD;
     A[User Interface/API] --> B[Currency Converter Service]
     A --> C[Multigateway Payment Service]
@@ -11,6 +11,7 @@ graph TD;
     B --> F[Cache de Conversão]
     B --> G[Open Exchange Rate API]
 
+```
 
 Descrição dos Componentes
 1. Handlers/Back-end API: Interface onde os usuários iniciam as interações e onde as solicitações da API são recebidas.
