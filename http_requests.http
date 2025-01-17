@@ -14,7 +14,7 @@ Content-Type: application/json
     }
 }
 
-### Verificar Status da Transação
+### Verificar Status da Transação, necessario substituir o valor PAY- com o valor obtido no endpoint superior
 GET http://localhost:8080/payment-status?transaction_id=PAY-865726753&gateway=PayPal
 
 
