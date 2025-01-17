@@ -1,0 +1,158 @@
+openapi: 3.0.0
+info:
+  title: API de Pagamentos e Conversão de Moeda
+  description: Esta API permite processar pagamentos e converter moedas.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /process-payment:
+    post:
+      summary: Processa um pagamento
+      requestBody:
+        description: Dados da solicitação de pagamento
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+      responses:
+        '200':
+          description: Resposta de sucesso do processamento do pagamento
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+          description: Solicitação inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /payment-status:
+    get:
+      summary: Obtém o status de um pagamento
+      parameters:
+        - name: transaction_id
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: gateway
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Resposta de sucesso do status do pagamento
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        '400':
+          description: Solicitação inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /convert-currency:
+    post:
+      summary: Converte moeda
+      requestBody:
+        description: Dados da solicitação de conversão de moeda
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CurrencyConversionRequest'
+      responses:
+        '200':
+          description: Resposta de sucesso da conversão de moeda
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrencyConversionResponse'
+        '400':
+          description: Solicitação inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Erro no servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    PaymentRequest:
+      type: object
+      properties:
+        gateway:
+          type: string
+        amount:
+          type: number
+        currency:
+          type: string
+        payment_method:
+          type: string
+        card_details:
+          type: object
+          properties:
+            number:
+              type: string
+            expiry:
+              type: string
+            cvv:
+              type: string
+      required:
+        - gateway
+        - amount
+        - currency
+        - payment_method
+        - card_details
+    PaymentResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        transaction_id:
+          type: string
+    TransactionResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        status:
+          type: string
+    CurrencyConversionRequest:
+      type: object
+      properties:
+        amount:
+          type: number
+        from_currency:
+          type: string
+        to_currency:
+          type: string
+      required:
+        - amount
+        - from_currency
+        - to_currency
+    CurrencyConversionResponse:
+      type: object
+      properties:
+        converted_amount:
+          type: number
+        from_currency:
+          type: string
+        to_currency:
+          type: string
+        rate:
+          type: number
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string

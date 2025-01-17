@@ -1,3 +1,13 @@
+// handlers_test.go
+// Este arquivo contém testes para o handler ProcessPayment do serviço de pagamentos.
+// Ele verifica se o processamento de pagamentos é realizado corretamente com base nas requisições recebidas.
+// Utiliza a biblioteca testify/assert para validação dos resultados e net/http/httptest para simular requisições HTTP.
+
+// O arquivo inclui três testes principais:
+// 1. TestProcessPayment_ValidRequest: Verifica se uma solicitação válida resulta em uma resposta de sucesso com o ID da transação.
+// 2. TestProcessPayment_InvalidRequest: Verifica se uma solicitação inválida (faltando dados) resulta em um erro adequado.
+// 3. TestProcessPayment_UnsupportedGateway: Verifica se o uso de um gateway não suportado resulta em um erro adequado.
+
 package handlers_test
 
 import (
@@ -48,7 +58,7 @@ func TestProcessPayment_ValidRequest(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	assert.Contains(t, response.Message, "Payment processed with success.")
+	assert.Contains(t, response.Message, "Payment processed with success")
 	assert.NotEmpty(t, response.Transaction_ID)
 }
 

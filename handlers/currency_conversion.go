@@ -1,3 +1,11 @@
+// currency_conversion.go
+// Este arquivo contém o handler para processar solicitações de conversão de moeda.
+// Ele utiliza os pacotes services e models para realizar a conversão de moeda e validar dados de entrada.
+// As solicitações são recebidas como JSON, validadas e encaminhadas para o serviço apropriado para conversão.
+
+// O arquivo inclui uma função principal:
+// ConvertCurrency: Lida com solicitações de conversão de moeda, decodifica a solicitação JSON, valida os dados e encaminha para o serviço de conversão de moeda.
+
 package handlers
 
 import (

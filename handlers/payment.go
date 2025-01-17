@@ -1,3 +1,12 @@
+// handlers.go
+// Este arquivo contém handlers para processar solicitações de pagamento e verificar o status de transações.
+// Utiliza os pacotes services e models para processar pagamentos e validar dados de entrada.
+// As solicitações são recebidas como JSON, validadas e encaminhadas para os serviços apropriados para processamento.
+
+// O arquivo inclui duas funções principais:
+// 1. ProcessPayment: Lida com solicitações de pagamento, decodifica a solicitação JSON, valida os dados e encaminha para o gateway de pagamento especificado.
+// 2. GetPaymentStatus: Lida com solicitações para verificar o status de uma transação com base no ID da transação e no gateway de pagamento fornecido.
+
 package handlers
 
 import (
