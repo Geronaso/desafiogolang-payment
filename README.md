@@ -68,6 +68,12 @@ go mod tidy
 go run .\main.go
 ```
 
+Caso prefira via docker
+
+```
+docker build -t desafiogolang-payment .
+docker run -p 8080:8080 desafiogolang-payment
+```
 
 ## Documentação da API
 
