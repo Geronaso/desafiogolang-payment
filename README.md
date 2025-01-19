@@ -1,4 +1,4 @@
-# desafiogolang-neo4j
+# desafiogolang-payment
 Este repositório é um desafio de programação que simula um arquitetura multigateway e multimoeda para um sistema de cobranças e processos financeiros.
 
 ## Arquitetura
