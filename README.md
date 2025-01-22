@@ -137,11 +137,11 @@ Foi utilizado Clean Architecture para organização do código, como não há co
 - Monitoramento com ferramentas de observabilidade (Prometheus, DataDog, Grafana)
 
 
-## Licença
+## Author
+Cézar Murilo (cezarmgt@gmail.com)
 
-Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+## License
 
----
+GNU General Public License v3.0 or later.
 
-MIT License
-
+See [LICENSE](LICENSE) for the full text.
